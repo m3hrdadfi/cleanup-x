@@ -11,6 +11,10 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 - Release-ready project documentation, contribution guidance, security policy, and MIT license.
 - GitHub Actions CI for backend lint/tests and frontend unit, build, and Playwright checks.
 
+### Fixed
+
+- Pin the GitHub Actions uv setup to a resolvable immutable release commit.
+
 ## [0.1.0] - 2026-08-31
 
 ### Added
