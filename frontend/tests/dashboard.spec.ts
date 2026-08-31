@@ -47,7 +47,7 @@ test("completed scans distinguish confident non-matches from failures", async ({
   await page.route("**/api/scans/scan-zero/results?*", async (route) => route.fulfill({ json: { total: 1, items: [{ post_id: "post-1", text: "A geopolitical post", content_type: "repost", matches: false, confidence: .97, detected_language: "en", reason_en: "This does not discuss AI technologies.", reason_fa: "", selected: false, status: "classified" }] } }));
   await page.goto("/scans/scan-zero");
   await expect(page.getByText("Not a match", { exact: true })).toBeVisible();
-  await expect(page.getByText("97% classification confidence", { exact: true })).toBeVisible();
+  await expect(page.getByText("Classification confidence: 97%", { exact: true })).toBeVisible();
   await expect(page.getByText(/scan completed correctly/i)).toBeVisible();
 });
 
@@ -112,7 +112,7 @@ test("mobile navigation exposes all primary routes", async ({ page }) => {
 test("deletion history keeps completed jobs reachable", async ({ page }) => {
   await page.goto("/deletions");
   await expect(page.getByRole("heading", { name: "Deletion history" })).toBeVisible();
-  await expect(page.getByText("2501/2501")).toBeVisible();
+  await expect(page.getByText(/2,?501\/2,?501/)).toBeVisible();
   await expect(page.getByRole("link", { name: "View", exact: true })).toHaveAttribute("href", "/deletions/7dea6283-1895-4084-8544-6d0ed2c5fa1b");
 });
 
@@ -120,7 +120,7 @@ test("archive overview presents history and scan insight", async ({ page }) => {
   await page.goto("/overview");
   await expect(page.getByRole("heading", { name: "Your archive, at a glance" })).toBeVisible();
   await expect(page.getByText("3,450", { exact: true }).first()).toBeVisible();
-  await expect(page.getByRole("img", { name: "Archive posts by month" })).toBeVisible();
+  await expect(page.getByRole("slider", { name: "Archive posts by month" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Latest scan insight" })).toBeVisible();
 });
 
@@ -148,7 +148,7 @@ test("inventory shows one scan request at a time instead of stacking results", a
     await route.fulfill({ json: { items: [{ id: isNew ? "ai-post" : "political-post", text: isNew ? "A post about local AI models" : "A post about an election", source_text: null, language: "en", posted_at: "2026-01-01T00:00:00Z", content_type: "post", from_api: false, from_archive: true, classification: { matches: true, confidence: .96, detected_language: "en", reason_en: "Matches this request.", selected: true, status: "classified" } }], total: 1, page: 1, page_size: 50, coverage: { live_api: 0, archive: 2, archive_only: 2, unresolved_reposts: 0 }, complete_history: true, scan } });
   });
   await page.goto("/inventory");
-  await expect(page.getByText("2 scan sessions", { exact: true })).toBeVisible();
+  await expect(page.getByText("Scan sessions: 2", { exact: true })).toBeVisible();
   await page.locator("article").filter({ hasText: "Find AI posts" }).getByRole("link", { name: "View" }).click();
   await expect(page).toHaveURL(/\/inventory\/scan-new$/);
   await expect(page.getByText("A post about local AI models", { exact: true })).toBeVisible();
