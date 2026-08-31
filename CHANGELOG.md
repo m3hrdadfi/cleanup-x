@@ -15,6 +15,7 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and
 
 - Pin the GitHub Actions uv setup to a resolvable immutable release commit.
 - Align browser assertions with localized counts, scan-session labels, and the archive chart's accessible slider role.
+- Correct the archive overview E2E label to match the localized “Posting history” chart name.
 
 ## [0.1.0] - 2026-08-31
 

@@ -120,7 +120,7 @@ test("archive overview presents history and scan insight", async ({ page }) => {
   await page.goto("/overview");
   await expect(page.getByRole("heading", { name: "Your archive, at a glance" })).toBeVisible();
   await expect(page.getByText("3,450", { exact: true }).first()).toBeVisible();
-  await expect(page.getByRole("slider", { name: "Archive posts by month" })).toBeVisible();
+  await expect(page.getByRole("slider", { name: "Posting history" })).toBeVisible();
   await expect(page.getByRole("heading", { name: "Latest scan insight" })).toBeVisible();
 });
 
