@@ -17,8 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     env:
-      APP_ENV: test
-      APP_DATABASE_URL: sqlite:///${{ runner.temp }}/cleanup-x-ci.db
+      APP_DATABASE_URL: sqlite:////tmp/cleanup-x-ci.db
 
     steps:
       - name: Check out repository
