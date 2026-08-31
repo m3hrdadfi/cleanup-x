@@ -1,0 +1,1 @@
+"""Cleanup X backend."""
