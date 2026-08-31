@@ -291,6 +291,19 @@ For contribution standards, localization requirements, and pull-request checks, 
 - [MIT License](LICENSE)
 - [Localization guide](frontend/src/locales/README.md)
 
+## Support this project
+
+Cleanup X is an independent, self-hosted project maintained in the open. If it's useful to you, consider sponsoring its development:
+
+<p align="left">
+  <a href="https://github.com/sponsors/m3hrdadfi">
+    <img src="https://img.shields.io/badge/sponsor-%E2%9D%A4-db61a2?style=for-the-badge&logo=githubsponsors&logoColor=white" alt="Sponsor on GitHub">
+  </a>
+</p>
+
+Sponsorships fund ongoing development, provider-adapter coverage, and production-hardening work (backups, secrets rotation tooling, broader test coverage). Every bit helps, and every sponsor is genuinely appreciated.
+
+
 ## License
 
 Cleanup X is available under the [MIT License](LICENSE).
